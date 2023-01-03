@@ -1,0 +1,133 @@
+body {
+  background-color: #0a0a0a;
+  color: whitesmoke;
+}
+
+.container {
+  display: flex;
+  margin: 20px;
+  padding: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: center;
+}
+.backgroundPage {
+  width: 100%;
+  display: flex;
+
+  height: 700px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../pic/bg.jpg");
+  opacity: 0.7;
+  align-items: center;
+  /* filter: brightness(50%); */
+}
+.bgTitle {
+  font-size: 120px;
+  font-family: "Sevillana", cursive;
+  color: #ffbbdc;
+  display: flex;
+  align-self: flex-end;
+  padding-left: 20%;
+}
+.foodTile {
+  align-self: flex-end;
+
+  padding-left: 45%;
+  font-family: "Sevillana", cursive;
+  font-size: 44px;
+  color: whitesmoke;
+  font-weight: 700;
+  text-align: center;
+}
+.foodnameTitle {
+  font-family: "Concert One", cursive;
+  margin-left: 20px;
+}
+.recipeCard {
+  width: 400px;
+}
+.recipePics {
+  width: 350px;
+  height: 350px;
+  transition: transform 0.2s;
+}
+.recipePics:hover {
+  transform: scale(1.05);
+  /* background-color: rgba(52, 73, 94, 0.75); */
+  /* cursor: pointer; */
+  opacity: 0.9;
+}
+
+.recipeDes {
+  width: 350px;
+}
+.recipeContainer {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-self: center;
+}
+.detailsContainer {
+  display: flex;
+  margin: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.detailPic {
+  width: 400px;
+  align-self: center;
+  justify-content: center;
+}
+.recipeTitle {
+  font-family: "Concert One", cursive;
+  align-self: center;
+  justify-content: center;
+}
+.btn {
+  background-color: #e0115f;
+  color: aliceblue;
+  height: 30px;
+  border-radius: 12px;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+.btn {
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #91c9ff;
+  outline: none;
+  transition: 1s ease-in-out;
+}
+
+svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  fill: none;
+  stroke: #fff;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: 1s ease-in-out;
+}
+
+.btn:hover {
+  transition: 1s ease-in-out;
+  background: #4f95da;
+}
+
+.btn:hover svg {
+  stroke-dashoffset: -480;
+}
+
+.btn span {
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
+}
