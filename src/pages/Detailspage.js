@@ -115,7 +115,7 @@ export const DetailsPage = () => {
           </div>
           <div></div>
         </div>
-        <div>
+        <div className="restaurantMapContainer">
           {restaurants && restaurants.length > 0 ? (
             restaurants.map((items, index) => (
               <Map
@@ -130,17 +130,14 @@ export const DetailsPage = () => {
             <div></div>
           )}
         </div>
-        <div>
-          <p>
-            If you have eaten this food in a restaurant, you can recommend it to
-            others:
-          </p>
-        </div>
 
-        <div>
-          {/* <NavLink to={`/addrestaurant/${id.id}`} className="detailsLink">
-            Add restaurant
-          </NavLink> */}
+        <div className="addResContainer">
+          <div className="restxt">
+            <p>
+              If you have eaten this food in a restaurant, you can recommend it
+              to others:
+            </p>
+          </div>
           <a href={`/addrestaurant/${id.id}`} className="btnLink">
             <span></span>
             <span></span>
@@ -149,27 +146,31 @@ export const DetailsPage = () => {
             Add restaurant
           </a>
         </div>
-        {comments ? (
-          comments.map((comment, index) => {
-            return (
-              <div key={index}>
-                <h4></h4> <Comment text={comment.text}></Comment>
-              </div>
-            );
-          })
-        ) : (
-          <div></div>
-        )}
         <div>
-          Comment:
+          <div className="commentsCont">
+            {comments ? (
+              comments.map((comment, index) => {
+                return (
+                  <div key={index}>
+                    <h4></h4> <Comment text={comment.text}></Comment>
+                  </div>
+                );
+              })
+            ) : (
+              <div></div>
+            )}
+          </div>
+        </div>
+        <div>
+          Comment:{" "}
           <ReactQuill
             value={newComment}
             onChange={onCommentChange}
             className="quill"
           ></ReactQuill>
-        </div>
-        <div>
-          <button onClick={onCommentPost}>Post Comment</button>
+          <div>
+            <button onClick={onCommentPost}>Post Comment</button>
+          </div>
         </div>
       </div>
     </div>

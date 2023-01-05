@@ -4,3 +4,4 @@ export * from "./Homepage";
 export * from "./Detailspage";
 export * from "./NewRecipe";
 export * from "./NewRestaurant";
+export * from "./MyFavoriteRecipe";

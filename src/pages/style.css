@@ -292,3 +292,22 @@ a {
 .like {
   margin-top: 40px;
 }
+.restbtn {
+  display: block;
+  flex-direction: row;
+}
+.addResContainer {
+  display: block;
+  flex-direction: row;
+  width: 850px;
+}
+.restaurantMapContainer {
+  display: flex;
+}
+.commentsCont {
+  display: flex;
+}
+.restxt {
+  display: flex;
+  align-self: center;
+}

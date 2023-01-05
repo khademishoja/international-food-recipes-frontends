@@ -1,9 +1,14 @@
 import { apiUrl } from "../../config/constants";
 import axios from "axios";
-import { selectToken } from "./selectors";
+import { selectToken, selectFavoiteRestaurant } from "./selectors";
 import { appLoading, appDoneLoading, setMessage } from "../appState/slice";
 import { showMessageWithTimeout } from "../appState/thunks";
-import { loginSuccess, logOut, tokenStillValid } from "./slice";
+import {
+  loginSuccess,
+  logOut,
+  tokenStillValid,
+  setRecipesFavorite,
+} from "./slice";
 
 export const signUp = (name, email, password) => {
   return async (dispatch, getState) => {
@@ -116,3 +121,19 @@ export const getUserWithStoredToken = () => {
     }
   };
 };
+export const fetchFavoriteRestaurant =
+  (recipeId) => async (dispatch, getState) => {
+    try {
+      // debugger;
+      const { token } = getState().user;
+      const response = await axios.get(`http://localhost:4000/favorites/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response);
+      dispatch(setRecipesFavorite(response.data));
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
