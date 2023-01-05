@@ -22,7 +22,7 @@ export default function Map(props) {
           margin: "0px 19.5%",
         }}
         center={[props.latitude, props.longitude]}
-        zoom={13}
+        zoom={20}
         scrollWheelZoom={true}
       >
         <TileLayer

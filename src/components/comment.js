@@ -1,8 +1,4 @@
 const Comment = (props) => {
-  return (
-    <div>
-      <p>{props.text}</p>
-    </div>
-  );
+  return <div dangerouslySetInnerHTML={{ __html: props.text }}></div>;
 };
 export default Comment;

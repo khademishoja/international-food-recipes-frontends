@@ -36,7 +36,7 @@ const SearchField = (props) => {
   map.on("geosearch/marker/dragend", (args) => {
     debugger;
     dispatch(
-      setLocation({ latitude: args.location.x, longitude: args.location.y })
+      setLocation({ latitude: args.location.lat, longitude: args.location.lng })
     );
     console.log(args.location);
   });

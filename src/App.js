@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import { Navigation, MessageBox } from "./components";
 import { Homepage, Login, SignUp, NewRecipe, NewRestaurant } from "./pages";
 import { DetailsPage } from "./pages/Detailspage";
+import Navbar from "./components/Navbar";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,7 +17,9 @@ function App() {
 
   return (
     <div>
+      {/* <Navbar /> */}
       <Navigation />
+
       <MessageBox />
       <Routes>
         <Route path="/" element={<Homepage />} />

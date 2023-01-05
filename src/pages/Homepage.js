@@ -15,28 +15,29 @@ export const Homepage = () => {
   }, [dispatch]);
   if (!recipes) return <div>Loading...</div>;
   return (
-    <div className="container">
+    <div>
       <div className="backgroundPage">
         <h1 className="bgTitle">International food recipes</h1>
       </div>
       <div className="foodTile">
         <h2>Foods</h2>
       </div>
-
-      <div className="recipeContainer">
-        {recipes.map((recipe, index) => {
-          return (
-            <div key={index}>
-              <RecipeCards
-                id={recipe.id}
-                foodName={recipe.foodName}
-                imageUrl={recipe.imageUrl}
-                description={recipe.description}
-                likes={recipe.likes}
-              />
-            </div>
-          );
-        })}
+      <div className="container">
+        <div className="recipeContainer">
+          {recipes.map((recipe, index) => {
+            return (
+              <div key={index}>
+                <RecipeCards
+                  id={recipe.id}
+                  foodName={recipe.foodName}
+                  imageUrl={recipe.imageUrl}
+                  description={recipe.description}
+                  likes={recipe.likes}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

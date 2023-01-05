@@ -3,12 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import MapSelectArea from "../components/MapSelectArea";
 import { selectRestaurantLocation } from "../store/restaurant/selector";
+import { postRestaurant } from "../store/restaurant/thunks";
 
 export const NewRestaurant = () => {
   const id = useParams();
   const [image, setImage] = useState();
   const [name, setName] = useState("");
   const location = useSelector(selectRestaurantLocation);
+  const dispatch = useDispatch();
+
   useEffect(() => {});
   const onNameChange = (e) => {
     setName(e.target.value);
@@ -34,15 +37,15 @@ export const NewRestaurant = () => {
     setImage(file.url); //put the url in local state, next step you can send it to the backend
   };
   const onPost = () => {
-    // dispatch(
-    //   postRestaurant({
-    //   })
-    // );
-    console.log({
+    const obj = {
+      recipeId: id.id,
       name: name,
       longitude: location.longitude,
       latitude: location.latitude,
-    });
+      userId: null,
+    };
+    dispatch(postRestaurant(obj));
+    console.log(obj);
   };
   return (
     <div style={{ textAlign: "center" }}>

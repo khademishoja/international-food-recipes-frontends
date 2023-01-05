@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectToken, selectUser } from "../store/user/selectors";
 import { logOut } from "../store/user/slice";
 import { Link } from "react-router-dom";
+// import "../pages/style.css";
 
 export const Navigation = () => {
   const [open, setOpen] = useState(false);
@@ -14,7 +15,7 @@ export const Navigation = () => {
   const user = useSelector(selectUser);
 
   return (
-    <Nav>
+    <Nav className="navbar">
       <Logo href="/">
         Codaisseur<span>templates</span>
       </Logo>
@@ -23,8 +24,8 @@ export const Navigation = () => {
         <span />
         <span />
       </Hamburger>
-      <Menu open={open}>
-        <MenuLink to="/empty1">Empty 1</MenuLink>
+      <Menu open={open} className="menu">
+        <MenuLink to="/"> Home</MenuLink>
         {token && user ? (
           <MenuLink to="/addrecipe">Add New Recipe </MenuLink>
         ) : (
@@ -60,7 +61,7 @@ const Nav = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  background: #b22727;
+  background: black;
   /* position: absolute; */
   top: 0;
   left: 0;
@@ -99,6 +100,7 @@ const Hamburger = styled.div`
 
 const Menu = styled.div`
   display: flex;
+
   justify-content: space-between;
   align-items: center;
   position: relative;
