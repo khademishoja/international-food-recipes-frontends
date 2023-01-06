@@ -17,6 +17,7 @@
     "leaflet-area-select": "^1.0.5",
     "leaflet-geosearch": "^3.7.0",
     "leaflet-routing-machine": "^3.2.12",
+    "mdb-react-ui-kit": "^5.1.0",
     "quill": "^1.3.7",
     "react": "^18.1.0",
     "react-bootstrap": "^2.7.0",

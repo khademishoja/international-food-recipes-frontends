@@ -6,6 +6,8 @@ import {
   setRestaurant,
   setIsFavorite,
   updateRecipeLikeCount,
+  toggleCommentIsSent,
+  toggleBackToHome,
 } from "./slice";
 import axios from "axios";
 // import { useSelector } from "react-redux";
@@ -31,20 +33,20 @@ export const fetchDetailsRecipes = (recipeId) => async (dispatch, getState) => {
 };
 export const postRecipe = (recipe) => async (dispatch, getState) => {
   try {
-    // const { token } = getState().user;
+    const { token } = getState().user;
     const res = await axios.post("http://localhost:4000/newrecipe", recipe, {
-      // headers: {
-      //   Authorization: `Bearer ${token}`,
-      // },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
     console.log(res);
+    dispatch(toggleBackToHome(true));
   } catch (e) {
     console.log(e);
   }
 };
 export const fetchRegions = () => async (dispatch, getState) => {
   try {
-    // const { token } = getState().user;
     const res = await axios.get("http://localhost:4000/newrecipe/");
     dispatch(setRegions(res.data));
 
@@ -67,16 +69,16 @@ export const fetchComments = (recipeId) => async (dispatch, getState) => {
 };
 export const postComment = (comments) => async (dispatch, getState) => {
   try {
-    // const { token } = getState().user;
-    // const commentpost = { text: comment, recipeId: recipeId };
+    const { token } = getState().user;
     const res = await axios.post(`http://localhost:4000/comments/`, comments, {
-      // headers: {
-      //   Authorization: `Bearer ${token}`,
-      // },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
     console.log(comments.recipeId);
     const id = { id: comments.recipeId };
     dispatch(fetchComments(id));
+    dispatch(toggleCommentIsSent(true));
     console.log(res);
   } catch (e) {
     console.log(e.message);

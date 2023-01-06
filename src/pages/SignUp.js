@@ -11,6 +11,7 @@ export const SignUp = () => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [image, setImage] = useState();
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -25,9 +26,28 @@ export const SignUp = () => {
 
   const submitForm = (e) => {
     e.preventDefault()
-    dispatch(signUp(name, email, password))
+    dispatch(signUp(name, email, password,image))
   }
+  const uploadImage = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    //first parameter is always upload_preset, second is the name of the preset
+    data.append("upload_preset", "iyfoxclf");
 
+    //post request to Cloudinary, remember to change to your own link
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dsanefw3u/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+
+    const file = await res.json();
+    console.log("file", file); //check if you are getting the url back
+    setImage(file.url); //put the url in local state, next step you can send it to the backend
+  };
   return (
     <div style={{textAlign: "center"}}>
       <Container>
@@ -38,11 +58,13 @@ export const SignUp = () => {
             value={name} 
             onChange={(e) => setName(e.target.value)}
           />
+          <br/>
           <Input 
             placeholder="email"
             value={email} 
             onChange={(e) => setEmail(e.target.value)}
           />
+          <br/>
           <Input 
             type="password" 
             placeholder="password"
@@ -50,6 +72,12 @@ export const SignUp = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <br/>
+          <label for="formFileSm" class="form-label">You can upload your profile image here</label>
+          <br/>
+          <input type="file" class="form-control" form-control-sm
+           id="formFileSm"
+            onChange={uploadImage} />
+          <br/> 
           <Button type="submit">Sign Up</Button>
         </form>
       </Container>

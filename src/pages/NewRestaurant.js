@@ -58,6 +58,7 @@ export const NewRestaurant = () => {
       <input type="file" onChange={uploadImage} />
       <div>
         <img
+          className="img-thumbnail"
           style={{ width: 400 }}
           src={
             image

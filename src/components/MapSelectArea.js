@@ -6,8 +6,11 @@ import { setLocation } from "../store/restaurant/slice";
 const SearchField = (props) => {
   const dispatch = useDispatch();
 
+  const apikey = process.env.REACT_APP_API_KEY;
+  console.log("api key", apikey);
+
   const params = {
-    apiKey: "AIzaSyAWkGffEmPaZolfx90TBkuWQD8WwrpNO5M",
+    apiKey: process.env.REACT_APP_API_KEY,
     language: "nl", // render results in Dutch
     region: "nl", // prioritize matches within The Netherlands
   };

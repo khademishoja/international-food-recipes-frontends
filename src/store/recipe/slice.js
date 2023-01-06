@@ -7,6 +7,7 @@ const initialState = {
   comments: [],
   restaurants: [],
   isFavorite: false,
+  commentIsSent: false,
 };
 
 export const recipeSlice = createSlice({
@@ -36,6 +37,12 @@ export const recipeSlice = createSlice({
     updateRecipeLikeCount: (state, action) => {
       state.recipeDetails.likes = action.payload;
     },
+    toggleCommentIsSent: (state, action) => {
+      state.commentIsSent = action.payload;
+    },
+    toggleBackToHome: (state, action) => {
+      state.backToHome = action.payload;
+    },
   },
 });
 
@@ -47,6 +54,8 @@ export const {
   setRestaurant,
   setIsFavorite,
   updateRecipeLikeCount,
+  toggleCommentIsSent,
+  toggleBackToHome,
 } = recipeSlice.actions;
 
 export default recipeSlice.reducer;

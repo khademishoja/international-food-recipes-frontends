@@ -10,7 +10,7 @@ import {
   setRecipesFavorite,
 } from "./slice";
 
-export const signUp = (name, email, password) => {
+export const signUp = (name, email, password, imageUrl) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
     try {
@@ -18,6 +18,7 @@ export const signUp = (name, email, password) => {
         name,
         email,
         password,
+        imageUrl,
       });
 
       dispatch(

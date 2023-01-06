@@ -13,8 +13,8 @@ import {
   MyFavoriteRecipe,
 } from "./pages";
 import { DetailsPage } from "./pages/Detailspage";
-import Navbar from "./components/Navbar";
-
+// import Navbar from "./components/Navbar";
+import "bootstrap";
 function App() {
   const dispatch = useDispatch();
 

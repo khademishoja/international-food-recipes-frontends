@@ -7,14 +7,17 @@ import { useEffect } from "react";
 import { fetchRecipes } from "../store/recipe/thunks";
 import { selectRecipes } from "../store/recipe/selectors";
 import RecipeCards from "../components/RecipeCards";
+import { toggleBackToHome } from "../store/recipe/slice";
 export const Homepage = () => {
   const recipes = useSelector(selectRecipes);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchRecipes());
+    dispatch(toggleBackToHome(false));
   }, [dispatch]);
   if (!recipes) return <div>Loading...</div>;
   return (
+    // <div className="container">
     <div>
       <div className="backgroundPage">
         <h1 className="bgTitle">International food recipes</h1>
@@ -22,7 +25,7 @@ export const Homepage = () => {
       <div className="foodTile">
         <h2>Foods</h2>
       </div>
-      <div className="container">
+      <div className="d-flex justify-content-center">
         <div className="recipeContainer">
           {recipes.map((recipe, index) => {
             return (
