@@ -7,13 +7,12 @@ import { useEffect } from "react";
 import { fetchRecipes } from "../store/recipe/thunks";
 import { selectRecipes } from "../store/recipe/selectors";
 import RecipeCards from "../components/RecipeCards";
-import { toggleBackToHome } from "../store/recipe/slice";
+import { selectRegions } from "../store/recipe/selectors";
 export const Homepage = () => {
   const recipes = useSelector(selectRecipes);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchRecipes());
-    dispatch(toggleBackToHome(false));
   }, [dispatch]);
   if (!recipes) return <div>Loading...</div>;
   return (

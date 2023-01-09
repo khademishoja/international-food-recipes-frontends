@@ -4,8 +4,9 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import Map from "../components/Map";
 import { useEffect, useState } from "react";
 import React from "react";
-import ReactQuill from "react-quill";
+import { TfiHandPointDown } from "react-icons/tfi";
 import "react-quill/dist/quill.snow.css";
+
 import {
   fetchDetailsRecipes,
   toggleLike,
@@ -68,31 +69,43 @@ export const DetailsPage = () => {
               src={recipeDetails.imageUrl}
               alt="food pic"
             />
-            <p className="col-sm-6">{recipeDetails.description}</p>
+            <div className="col-sm-6">
+              <div>
+                <p>{recipeDetails.description}</p>
+              </div>
+              <div className="like">
+                <p>
+                  {user ? (
+                    <div>
+                      {isFavorite ? (
+                        <AiFillHeart size={30} onClick={onDisLikeClick} />
+                      ) : (
+                        <AiOutlineHeart size={30} onClick={onLikeClick} />
+                      )}
+                    </div>
+                  ) : (
+                    <div>
+                      {" "}
+                      <AiOutlineHeart
+                        size={30}
+                        onClick={function () {
+                          alert("please log in");
+                        }}
+                      />
+                    </div>
+                  )}
+                  {likes} people like {recipeDetails.foodName}
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="txtcont">
-            <div className="detailsDes">
+            {/* <div className="detailsDes">
               <h4>{recipeDetails.description}</h4>
-            </div>
+            </div> */}
             <div className="detailsTxt">
               <p>{recipeDetails.recipe}</p>
-            </div>
-            <div className="like">
-              <p>
-                {user ? (
-                  <div>
-                    {isFavorite ? (
-                      <AiFillHeart onClick={onDisLikeClick} />
-                    ) : (
-                      <AiOutlineHeart onClick={onLikeClick} />
-                    )}
-                  </div>
-                ) : (
-                  <AiOutlineHeart />
-                )}
-                {likes}
-              </p>
             </div>
           </div>
           <div></div>
@@ -103,34 +116,56 @@ export const DetailsPage = () => {
           </NavLink> */}
       </div>
 
-      <div>
+      <div className="row" style={{ width: "100%" }}>
         <RecentComments id={id} />
       </div>
-
-      <div>
+      <p style={{ marginTop: 50, fontSize: 20 }}>
+        Here you can see address of some of restaurants which serve{" "}
+        {recipeDetails.foodName}
+      </p>
+      <div
+        style={{
+          backgroundColor: "#a699d5",
+          color: "black",
+          borderRadius: 3,
+          width: "100%",
+          marginTop: 50,
+          padding: 50,
+        }}
+        className="d-flex flex-wrap justify-content-center"
+      >
         {restaurants && restaurants.length > 0 ? (
           restaurants.map((items, index) => (
-            <Map
-              latitude={items.latitude}
-              longitude={items.longitude}
-              index={index}
-              name={items.name}
-              imageUrl={items.imageUrl}
-            />
+            <div>
+              <h4 style={{ margin: 10 }} className="text-center">
+                {items.name}
+              </h4>
+              <Map
+                latitude={items.latitude}
+                longitude={items.longitude}
+                index={index}
+                name={items.name}
+                imageUrl={items.imageUrl}
+              />
+            </div>
           ))
         ) : (
           <div></div>
         )}
       </div>
 
-      <div>
-        <a href={`/addrestaurant/${id.id}`} className="btnLink">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
+      <div className="text-center">
+        <p style={{ marginTop: 50, fontSize: 20 }}>
+          {" "}
           Have you ever tried {recipeDetails.foodName} in a restaurant? Can you
-          recommend it?
+          recommend it?if so go here <TfiHandPointDown />
+        </p>
+        <a href={`/addrestaurant/${id.id}`} className="btn btn-secondary">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Recomend a restaurrant
         </a>
       </div>
 

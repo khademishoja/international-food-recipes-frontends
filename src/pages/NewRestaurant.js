@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import MapSelectArea from "../components/MapSelectArea";
 import { selectRestaurantLocation } from "../store/restaurant/selector";
 import { postRestaurant } from "../store/restaurant/thunks";
-
 export const NewRestaurant = () => {
   const id = useParams();
   const [image, setImage] = useState();
@@ -12,7 +11,6 @@ export const NewRestaurant = () => {
   const location = useSelector(selectRestaurantLocation);
   const dispatch = useDispatch();
 
-  useEffect(() => {});
   const onNameChange = (e) => {
     setName(e.target.value);
   };
@@ -43,37 +41,62 @@ export const NewRestaurant = () => {
       longitude: location.longitude,
       latitude: location.latitude,
       userId: null,
+      imageUrl: image,
     };
     dispatch(postRestaurant(obj));
     console.log(obj);
   };
   return (
-    <div style={{ textAlign: "center" }}>
-      <h1>Do you know a good resturant which has this dish?</h1>
-      <div>
-        title:
-        <textarea type="text" value={name} onChange={onNameChange}></textarea>
-      </div>
-
-      <input type="file" onChange={uploadImage} />
-      <div>
-        <img
-          className="img-thumbnail"
-          style={{ width: 400 }}
-          src={
-            image
-              ? image
-              : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
-          }
-        />
-        {image ? <h4 style={{ fontSize: 20 }}>Succesfully uploaded!</h4> : ""}
-      </div>
-      <div>
-        <MapSelectArea />
-      </div>
-      <div>
-        <button onClick={onPost}>Post</button>
-      </div>
+    <div className="container">
+      <form action="/">
+        <div className="row">
+          <div className="row">
+            <h2>New restaurant:</h2>
+          </div>
+          <div className="col col-sm-4">
+            <img
+              className="img-thumbnail file-input-img"
+              alt="attachment"
+              src={
+                image
+                  ? image
+                  : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
+              }
+            />
+          </div>
+          <div className="form-group col col-sm-8">
+            <div className="row">
+              <input
+                type={"text"}
+                id="title"
+                className="form-control recipe-input"
+                placeholder="Title"
+                value={name}
+                onChange={onNameChange}
+              ></input>
+            </div>
+            <div className="row">
+              <input
+                className="form-control recipe-input"
+                type="file"
+                onChange={uploadImage}
+                id="formFile"
+              ></input>
+            </div>
+            <div className="row">
+              <MapSelectArea />
+            </div>
+          </div>
+        </div>
+        <div className="row ">
+          {image ? <h4 style={{ fontSize: 20 }}>Succesfully uploaded!</h4> : ""}
+          <div className="text-center">
+            <button style={{ margin: 10 }} className="btn " onClick={onPost}>
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   );
 };

@@ -13,6 +13,8 @@ export const MyFavoriteRecipe = () => {
   if (!favoriteRestaurant) return <div>Loading...</div>;
   return (
     <div>
+      <h1 className="text-center text-secondary">My Favorite Recipes </h1>
+
       <div className="container">
         <div className="recipeContainer">
           {favoriteRestaurant && favoriteRestaurant.length > 0 ? (

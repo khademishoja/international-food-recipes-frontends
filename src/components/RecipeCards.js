@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { MDBBtn } from "mdb-react-ui-kit";
+
 import "../pages/style.css";
 const RecipeCards = ({
   id,
@@ -26,6 +28,11 @@ const RecipeCards = ({
           <span></span>
           Read More
         </a>
+        {/* <MDBBtn size="sm" className="me-1">
+        <NavLink to={`recipes/${id}`} className="detailsLink">
+            Read more
+          </NavLink>
+        </MDBBtn> */}
         {/* <button className="btn">
           <NavLink to={`recipes/${id}`} className="detailsLink">
             Read more

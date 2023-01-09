@@ -4,10 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectToken, selectUser } from "../store/user/selectors";
 import { logOut } from "../store/user/slice";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 // import "../pages/style.css";
 
 export const Navigation = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -31,7 +34,7 @@ export const Navigation = () => {
             width="48"
             height="48"
             fill="currentColor"
-            class="bi bi-person-circle"
+            className="bi bi-person-circle"
             viewBox="0 0 16 16"
           >
             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -48,8 +51,6 @@ export const Navigation = () => {
         <span />
       </Hamburger>
       <Menu open={open} className="menu">
-        <MenuLink to="/"> Home</MenuLink>
-
         {token && user ? (
           <MenuLink to="/favoriterecipe"> My Favorite Recipe</MenuLink>
         ) : (
@@ -60,8 +61,14 @@ export const Navigation = () => {
         ) : (
           <div></div>
         )}
+        <MenuLink to="/"> Home</MenuLink>
         {token ? (
-          <button onClick={() => dispatch(logOut())}>Logout</button>
+          <button
+            className="btn btn-secondary"
+            onClick={() => dispatch(logOut(), navigate("/"))}
+          >
+            Logout
+          </button>
         ) : (
           <MenuLink to="/login">Login</MenuLink>
         )}

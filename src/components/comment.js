@@ -1,4 +1,5 @@
 import { MDBCardImage, MDBIcon, MDBTypography } from "mdb-react-ui-kit";
+
 const Comment = (props) => {
   return (
     <div style={{ minWidth: 700 }}>

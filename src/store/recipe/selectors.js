@@ -7,4 +7,3 @@ export const selectRestaurants = (reduxState) => reduxState.recipe.restaurants;
 export const selectIsFavorite = (reduxState) => reduxState.recipe.isFavorite;
 export const selectCommentIsSent = (reduxState) =>
   reduxState.recipe.commentIsSent;
-export const selectBackToHome = (reduxState) => reduxState.recipe.backToHome;

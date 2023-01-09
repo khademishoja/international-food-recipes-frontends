@@ -40,9 +40,6 @@ export const recipeSlice = createSlice({
     toggleCommentIsSent: (state, action) => {
       state.commentIsSent = action.payload;
     },
-    toggleBackToHome: (state, action) => {
-      state.backToHome = action.payload;
-    },
   },
 });
 
@@ -55,7 +52,6 @@ export const {
   setIsFavorite,
   updateRecipeLikeCount,
   toggleCommentIsSent,
-  toggleBackToHome,
 } = recipeSlice.actions;
 
 export default recipeSlice.reducer;

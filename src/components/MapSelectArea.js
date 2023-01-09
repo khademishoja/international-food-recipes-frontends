@@ -6,9 +6,6 @@ import { setLocation } from "../store/restaurant/slice";
 const SearchField = (props) => {
   const dispatch = useDispatch();
 
-  const apikey = process.env.REACT_APP_API_KEY;
-  console.log("api key", apikey);
-
   const params = {
     apiKey: process.env.REACT_APP_API_KEY,
     language: "nl", // render results in Dutch
@@ -30,14 +27,12 @@ const SearchField = (props) => {
   }, []);
 
   map.on("geosearch/showlocation", (args) => {
-    debugger;
     dispatch(
-      setLocation({ latitude: args.location.x, longitude: args.location.y })
+      setLocation({ latitude: args.location.y, longitude: args.location.x })
     );
     console.log(args.location);
   });
   map.on("geosearch/marker/dragend", (args) => {
-    debugger;
     dispatch(
       setLocation({ latitude: args.location.lat, longitude: args.location.lng })
     );
@@ -52,9 +47,7 @@ export default function MapSelectArea() {
     <div
       id="map"
       style={{
-        display: "flex",
-        justifyContent: "center",
-        margin: "50px",
+        marginTop: "10px",
         color: "black",
       }}
     >
@@ -62,11 +55,9 @@ export default function MapSelectArea() {
         style={{
           border: "2px solid",
           borderRadius: "10px",
-          height: "50vw",
-          width: "60vw",
-          maxWidth: "1000px",
-          maxHeight: "800px",
-          margin: "0px 19.5%",
+          height: "20vw",
+          width: "35vw",
+          margin: "0px",
         }}
         center={[52.36994, 4.906]}
         zoom={13}

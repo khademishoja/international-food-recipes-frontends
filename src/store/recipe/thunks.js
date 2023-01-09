@@ -40,7 +40,6 @@ export const postRecipe = (recipe) => async (dispatch, getState) => {
       },
     });
     console.log(res);
-    dispatch(toggleBackToHome(true));
   } catch (e) {
     console.log(e);
   }
@@ -87,7 +86,7 @@ export const postComment = (comments) => async (dispatch, getState) => {
 export const toggleLike = (item) => async (dispatch, getstate) => {
   try {
     const { token } = getstate().user;
-    debugger;
+
     const response = await axios.put(
       `http://localhost:4000/recipe`,
       { id: item.id, like: item.like },

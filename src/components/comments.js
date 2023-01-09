@@ -51,13 +51,18 @@ export function RecentComments(props) {
   };
   return (
     <section
-      style={{ backgroundColor: "#f7f6f6", color: "black", minWidth: 800 }}
+      style={{
+        backgroundColor: "#f7f6f6",
+        color: "black",
+        borderRadius: 3,
+        width: "100%",
+      }}
     >
-      <MDBContainer className="py-5" style={{ maxWidth: "1000px" }}>
-        <MDBRow className="justify-content-center">
-          <MDBCol md="12" lg="10">
+      <MDBContainer className="col col-12 col-sm-6 col-md-3">
+        <MDBRow style={{ width: "100%", borderRadius: 3 }}>
+          <MDBCol md="12" lg="12">
             <MDBCard className="text-dark">
-              <MDBCardBody className="p-4">
+              <MDBCardBody>
                 <MDBTypography tag="h4" className="mb-0">
                   Recent comments
                 </MDBTypography>
@@ -89,41 +94,45 @@ export function RecentComments(props) {
                   <div></div>
                 )}
               </MDBCardBody>
-              <MDBCardFooter
-                className="py-3 border-0"
-                style={{ backgroundColor: "#f8f9fa" }}
-              >
-                <div className="d-flex flex-start w-100">
-                  {user ? (
-                    <MDBCardImage
-                      className="rounded-circle shadow-1-strong me-3"
-                      src={user.imageUrl}
-                      alt="avatar"
-                      width="40"
-                      height="40"
+              {user ? (
+                <MDBCardFooter
+                  className="py-3 border-0"
+                  style={{ backgroundColor: "#f8f9fa" }}
+                >
+                  <div className="d-flex flex-start w-100">
+                    {user.imageUrl ? (
+                      <MDBCardImage
+                        className="rounded-circle shadow-1-strong me-3"
+                        src={user.imageUrl}
+                        alt="avatar"
+                        width="40"
+                        height="40"
+                      />
+                    ) : (
+                      <div></div>
+                    )}
+                    <MDBTextArea
+                      label="Message"
+                      id="textAreaExample"
+                      rows={4}
+                      style={{ backgroundColor: "#fff" }}
+                      wrapperClass="w-100"
+                      onChange={onCommentChange}
+                      value={newComment}
                     />
-                  ) : (
-                    <div></div>
-                  )}
-                  <MDBTextArea
-                    label="Message"
-                    id="textAreaExample"
-                    rows={4}
-                    style={{ backgroundColor: "#fff" }}
-                    wrapperClass="w-100"
-                    onChange={onCommentChange}
-                    value={newComment}
-                  />
-                </div>
-                <div className="float-end mt-2 pt-1">
-                  <MDBBtn onClick={onCommentPost} size="sm" className="me-1">
-                    Post comment
-                  </MDBBtn>
-                  <MDBBtn onClick={onCommentCancel} outline size="sm">
-                    Cancel
-                  </MDBBtn>
-                </div>
-              </MDBCardFooter>
+                  </div>
+                  <div className="float-end mt-2 pt-1">
+                    <MDBBtn onClick={onCommentPost} size="sm" className="me-1">
+                      Post comment
+                    </MDBBtn>
+                    <MDBBtn onClick={onCommentCancel} outline size="sm">
+                      Cancel
+                    </MDBBtn>
+                  </div>
+                </MDBCardFooter>
+              ) : (
+                <div></div>
+              )}
             </MDBCard>
           </MDBCol>
         </MDBRow>

@@ -8,18 +8,18 @@ export default function Map(props) {
       style={{
         display: "flex",
         justifyContent: "center",
-        margin: "50px",
+        margin: "10px",
       }}
     >
       <MapContainer
         style={{
           border: "2px solid",
           borderRadius: "10px",
-          height: "30vw",
-          width: "40vw",
+          height: "18vw",
+          width: "18vw",
           maxWidth: "500px",
           maxHeight: "300px",
-          margin: "0px 19.5%",
+          borderColor: "rgb(248, 249, 250)",
         }}
         center={[props.latitude, props.longitude]}
         zoom={20}
