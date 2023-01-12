@@ -127,7 +127,7 @@ export const fetchFavoriteRestaurant =
     try {
       // debugger;
       const { token } = getState().user;
-      const response = await axios.get(`http://localhost:4000/favorites/`, {
+      const response = await axios.get(`${apiUrl}/favorites/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
