@@ -13,13 +13,12 @@ export default function Map(props) {
     >
       <MapContainer
         style={{
-          border: "2px solid",
+          border: "5px solid black",
           borderRadius: "10px",
           height: "18vw",
           width: "18vw",
           maxWidth: "500px",
           maxHeight: "300px",
-          borderColor: "rgb(248, 249, 250)",
         }}
         center={[props.latitude, props.longitude]}
         zoom={20}

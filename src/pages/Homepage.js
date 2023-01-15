@@ -6,8 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchRecipes } from "../store/recipe/thunks";
 import { selectRecipes } from "../store/recipe/selectors";
-import RecipeCards from "../components/RecipeCards";
-import { selectRegions } from "../store/recipe/selectors";
+import RecipeCards from "../components/RecipeCards"; 
 export const Homepage = () => {
   const recipes = useSelector(selectRecipes);
   const dispatch = useDispatch();
@@ -20,11 +19,8 @@ export const Homepage = () => {
     <div>
       <div className="backgroundPage">
         <h1 className="bgTitle">International food recipes</h1>
-      </div>
-      <div className="foodTile">
-        <h2>Foods</h2>
-      </div>
-      <div className="d-flex justify-content-center">
+      </div> 
+      <div className="d-flex justify-content-center" style={{marginBottom:50}}>
         <div className="recipeContainer">
           {recipes.map((recipe, index) => {
             return (

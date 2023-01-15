@@ -6,41 +6,19 @@ import "../pages/style.css";
 const RecipeCards = ({
   id,
   foodName,
-  recipe,
   imageUrl,
   description,
   likes,
 }) => {
   return (
-    <div className="recipeCard">
-      <div className="recipeCardChilds">
-        <h2 className="foodnameTitle">{foodName}</h2>
-        <a href={`recipes/${id}`}>
-          {" "}
-          <img src={imageUrl} alt="food pic" className="recipePics" />
-        </a>
-        <p className="recipeDes">{description}</p>
-        <p>❤️ {likes}</p>
-        <a href={`recipes/${id}`} className="btnLink">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          Read More
-        </a>
-        {/* <MDBBtn size="sm" className="me-1">
-        <NavLink to={`recipes/${id}`} className="detailsLink">
-            Read more
-          </NavLink>
-        </MDBBtn> */}
-        {/* <button className="btn">
-          <NavLink to={`recipes/${id}`} className="detailsLink">
-            Read more
-          </NavLink>
-        </button> */}
-        {/* <button className="btn">
-       
-      </button> */}
+
+    <div className="card recipeCard"  >
+      <img src={imageUrl} className="card-img-top recipePics" alt="..." />
+      <div className="card-body" >
+        <h5 className="card-title foodnameTitle">{foodName}</h5>
+        <p className="card-text recipeDes">{description}</p>
+        <p className="card-text">❤️{likes}</p>
+        <NavLink to={`recipes/${id}`} className="btn btn-primary">Read more</NavLink>
       </div>
     </div>
   );

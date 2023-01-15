@@ -125,9 +125,8 @@ export const DetailsPage = () => {
       </p>
       <div
         style={{
-          backgroundColor: "#a699d5",
-          color: "black",
-          borderRadius: 3,
+          backgroundColor: "rgb(102 37 11)", 
+          borderRadius: 3, 
           width: "100%",
           marginTop: 50,
           padding: 50,
