@@ -4,7 +4,11 @@ import { postRecipe, fetchRegions } from "../store/recipe/thunks";
 import { selectUser } from "../store/user/selectors";
 import { selectRegions } from "../store/recipe/selectors";
 import { useNavigate } from "react-router-dom";
+// import { Ingrediente } from "../components/Ingrediente";
+// import { addIngridiante } from "../store/recipe/slice";
 export const NewRecipe = () => {
+  // const [ingredientes, setIngredientes] = useState([]);
+
   const [image, setImage] = useState();
   const [foodName, setFoodName] = useState("");
   const [description, setDescription] = useState("");
@@ -31,6 +35,10 @@ export const NewRecipe = () => {
   const onRecipeChange = (e) => {
     setRecipe(e.target.value);
   };
+  // const addIngridiante = () => {
+  //   const newObj = { title: "", item: "", amount: "" };
+  //   dispatch(addIngridiante(newObj));
+  // };
   const uploadImage = async (e) => {
     const files = e.target.files;
     const data = new FormData();
@@ -146,6 +154,27 @@ export const NewRecipe = () => {
           </div>
         </div>
       </div>
+      {/* <div className="row">
+        <button onClick={addIngridiante}>+</button>
+      </div> */}
+      {/* <div className="row">
+        {ingredientes ? (
+          ingredientes.map((item, index) => {
+            return (
+              <div className="row" key={index}>
+                <Ingrediente
+                  index={index}
+                  title={item.title}
+                  unit={item.unit}
+                  amount={item.amount}
+                />
+              </div>
+            );
+          })
+        ) : (
+          <div></div>
+        )}
+      </div> */}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 body {
-  background-color: #1D0F0F;
+  background-color: #1d0f0f;
   color: whitesmoke;
   padding: 0;
   margin: 0;
@@ -31,7 +31,7 @@ body {
 .bgTitle {
   font-size: 120px;
   font-family: "Sevillana", cursive;
-  color: #B9848C;
+  color: #b9848c;
   display: flex;
   align-self: flex-end;
   padding-left: 20%;
@@ -44,9 +44,9 @@ body {
   text-align: center;
 }
 .foodnameTitle {
-max-height: 1em;
-text-overflow: ellipsis;
-overflow: hidden;
+  max-height: 1em;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .recipeTitle {
   font-family: "Concert One", cursive;
@@ -61,7 +61,7 @@ overflow: hidden;
   flex-wrap: wrap;
   text-align: center;
   align-self: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 .detailsContainer {
   display: flex;
@@ -96,14 +96,13 @@ overflow: hidden;
 .recipeCard {
   width: 370px;
   justify-content: center;
-  align-items: center; 
- margin-top: 30px;
- color: #483948;
- /* background-color: hsla(46, 43%, 80%, 0.712) */
- background-color: whitesmoke
+  align-items: center;
+  margin-top: 30px;
+  color: #483948;
+  /* background-color: hsla(46, 43%, 80%, 0.712) */
+  background-color: whitesmoke;
 }
 .recipePics {
- 
   height: 360px;
   /* transition: transform 0.2s;
   padding-top: 20px;
@@ -162,7 +161,7 @@ a {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #B9848C;
+  background-color: #b9848c;
   color: white;
   font-size: 16px;
   cursor: pointer;

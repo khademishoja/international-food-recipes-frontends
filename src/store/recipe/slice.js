@@ -8,6 +8,7 @@ const initialState = {
   restaurants: [],
   isFavorite: false,
   commentIsSent: false,
+  ingredients: [],
 };
 
 export const recipeSlice = createSlice({
@@ -40,6 +41,22 @@ export const recipeSlice = createSlice({
     toggleCommentIsSent: (state, action) => {
       state.commentIsSent = action.payload;
     },
+    updateIngredients: (state, action) => {
+      const updatedObj = {
+        title: action.payload.title,
+        unit: action.payload.unit,
+        amount: action.payload.amount,
+      };
+      state.ingredients = [
+        ...state.ingredients.slice(0, action.payload.index),
+        updatedObj,
+        ...state.ingredients.slice(action.payload.index + 1),
+      ];
+    },
+    addIngrediente: (state, action) => {
+      //debugger;
+      //state.ingredients = [...state.ingredients, action.payload];
+    },
   },
 });
 
@@ -52,6 +69,8 @@ export const {
   setIsFavorite,
   updateRecipeLikeCount,
   toggleCommentIsSent,
+  updateIngredients,
+  addIngrediente,
 } = recipeSlice.actions;
 
 export default recipeSlice.reducer;
