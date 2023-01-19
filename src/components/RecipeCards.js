@@ -18,7 +18,7 @@ const RecipeCards = ({
         <h5 className="card-title foodnameTitle">{foodName}</h5>
         <p className="card-text recipeDes">{description}</p>
         <p className="card-text">❤️{likes}</p>
-        <NavLink to={`recipes/${id}`} className="btn btn-primary">Read more</NavLink>
+        <NavLink to={`/recipes/${id}`} className="btn btn-primary">Read more</NavLink>
       </div>
     </div>
   );
